@@ -1,0 +1,27 @@
+ Clue Game :-
+ ---------
+ Here’s how you play:
+
+ At the start, three secret cards are hidden in an envelope. These cards tell the real answer:
+
+ one person (like Colonel Mustard), one room (like the Kitchen), and one thing they used (like a Wrench).
+
+ You get some cards that show people, rooms, or things. If you have a card, you know that person, room,
+ or thing didn't do the crime!
+
+ You move your detective piece around the house, going into different rooms.
+
+ When you enter a room, you can make a "suggestion." You say something like,
+ "I think Professor Plum did it in the Library with the Rope!"
+
+ Then, the other players have to secretly show you one of those cards if they have it.
+
+ This helps you figure out what’s not the answer.
+
+ You keep moving, making suggestions, and writing down clues until you think you know the real answer.
+
+ When you're really sure, you make a big guess called an "accusation." You say who, where, and what.
+
+ Then, you peek at the secret cards.
+
+ If you’re right—YAY! You win! If you’re wrong, you keep playing, but you can’t make another guess.

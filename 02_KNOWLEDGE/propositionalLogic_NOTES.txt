@@ -131,9 +131,27 @@ P : It is a Tuesday
 Q : It is raining
 R : Harry will go for a run
 
-Knowledge Base (KB) : (P ∧ ¬Q) → R
+Knowledge Base (KB) : (P ∧ ¬Q) → R  , P , ¬Q
                       { If it is a tuesday and it is not raining than Harry will go for a run }
 Inference : R {Harry will go for a run}
 
 ==================================================================================================================
 ==================================================================================================================
+
+Truth table :-
+-------------
+
+------------------------------------------------------
+(P ∧ ¬Q) → R |      P     |  ¬Q      | Knowledge Base |
+------------------------------------------------------|
+false        |   false    |  false   |   false        |
+false        |   false    |  true    |   false        |
+false        |   true     |  false   |   false        |
+false        |   true     |  true    |   false        |
+true         |   false    |  false   |   false        |
+-------------------------------------------------------
+true         |   false    |  true    |   true         |  <- One possible world where K.B. is true
+-------------------------------------------------------
+true         |   true     |  false   |   false        |
+true         |   true     |  true    |   false        |
+------------------------------------------------------

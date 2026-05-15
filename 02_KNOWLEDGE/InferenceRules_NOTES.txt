@@ -1,0 +1,502 @@
+MODEL CHECKING VS INFERENCE RULES
+
+Model Checking is not an efficient algorithm because it has to consider every possible model before giving the answer.
+
+Reminder:
+A query R is true if under all the models (truth assignments) where the KB is true, R is true as well.
+
+Inference rules allow us to generate new information based on existing knowledge without considering every possible model.
+
+Inference rules are usually represented using a horizontal bar that separates:
+- Premise (top)
+- Conclusion (bottom)
+
+The premise is whatever knowledge we have, and the conclusion is what knowledge can be generated based on the premise.
+
+
+==================================================
+MODUS PONENS
+==================================================
+
+Premises:
+1. If it is raining, then Harry is inside.
+2. It is raining.
+
+Conclusion:
+→ Harry is inside.
+
+Formal Rule:
+
+P → Q
+P
+──────
+Q
+
+This inference rule is called Modus Ponens.
+
+Meaning:
+If we know an implication and its antecedent are true,
+then the consequent must also be true.
+
+
+==================================================
+AND ELIMINATION
+==================================================
+
+If an AND proposition is true, then any proposition inside it is also true.
+
+Example:
+Harry is friends with Ron AND Hermione.
+
+Conclusion:
+→ Harry is friends with Hermione.
+
+Formal Rule:
+
+P ∧ Q
+─────
+P
+
+or
+
+P ∧ Q
+─────
+Q
+
+
+==================================================
+DOUBLE NEGATION ELIMINATION
+==================================================
+
+A proposition negated twice becomes true.
+
+Example:
+"It is not true that Harry did not pass the test."
+
+Formal form:
+¬(¬P)
+
+Conclusion:
+→ P
+
+Formal Rule:
+
+¬(¬P)
+─────
+P
+
+
+==================================================
+IMPLICATION ELIMINATION
+==================================================
+
+An implication is equivalent to:
+¬P ∨ Q
+
+Formal Rule:
+
+P → Q
+────────
+¬P ∨ Q
+
+Example:
+"If it is raining, Harry is inside"
+
+Equivalent to:
+"It is not raining OR Harry is inside"
+
+Truth Table:
+
+P      Q      P→Q      ¬P∨Q
+--------------------------------
+F      F       T         T
+F      T       T         T
+T      F       F         F
+T      T       T         T
+
+Since both columns match exactly,
+P → Q ≡ ¬P ∨ Q
+
+
+==================================================
+BICONDITIONAL ELIMINATION
+==================================================
+
+A biconditional is equivalent to two implications joined by AND.
+
+Formal Rule:
+
+P ↔ Q
+────────────────
+(P → Q) ∧ (Q → P)
+
+Example:
+"It is raining if and only if Harry is inside"
+
+Equivalent to:
+(If it is raining → Harry is inside)
+AND
+(If Harry is inside → It is raining)
+
+
+==================================================
+DE MORGAN'S LAWS
+==================================================
+
+1. Negation of AND
+
+Formal Rule:
+
+¬(P ∧ Q)
+────────────
+¬P ∨ ¬Q
+
+Example:
+"It is not true that both Harry and Ron passed."
+
+Equivalent to:
+"Harry did not pass OR Ron did not pass."
+
+
+----------------------------------
+
+2. Negation of OR
+
+Formal Rule:
+
+¬(P ∨ Q)
+────────────
+¬P ∧ ¬Q
+
+Example:
+"It is not true that Harry or Ron passed."
+
+Equivalent to:
+"Harry did not pass AND Ron did not pass."
+
+
+==================================================
+DISTRIBUTIVE PROPERTY
+==================================================
+
+AND and OR can be distributed.
+
+Formal Rules:
+
+P ∨ (Q ∧ R)
+────────────────────
+(P ∨ Q) ∧ (P ∨ R)
+
+P ∧ (Q ∨ R)
+────────────────────
+(P ∧ Q) ∨ (P ∧ R)
+
+
+==================================================
+KNOWLEDGE AS SEARCH PROBLEM
+==================================================
+
+Inference can be viewed as a search problem.
+
+Components:
+
+Initial State:
+→ Starting Knowledge Base
+
+Actions:
+→ Inference Rules
+
+Transition Model:
+→ New KB after inference
+
+Goal Test:
+→ Check whether statement to prove exists in KB
+
+Path Cost:
+→ Number of inference steps
+
+
+==================================================
+RESOLUTION
+==================================================
+
+Resolution states:
+
+If one literal in an OR statement is false,
+the other must be true.
+
+Example:
+
+(Ron is in Great Hall) ∨ (Hermione is in Library)
+¬(Ron is in Great Hall)
+
+Conclusion:
+→ Hermione is in Library
+
+Formal Rule:
+
+P ∨ Q
+¬P
+──────
+Q
+
+
+==================================================
+COMPLEMENTARY LITERALS
+==================================================
+
+Complementary literals are:
+P and ¬P
+
+One is negated, the other is not.
+
+
+==================================================
+GENERALIZED RESOLUTION
+==================================================
+
+Given:
+
+P ∨ Q
+¬P ∨ R
+
+Conclusion:
+────────
+Q ∨ R
+
+Example:
+
+(Ron in Great Hall ∨ Hermione in Library)
+(¬Ron in Great Hall ∨ Harry sleeping)
+
+Conclusion:
+→ Hermione in Library ∨ Harry sleeping
+
+
+==================================================
+CLAUSES AND CNF
+==================================================
+
+Clause:
+A disjunction (OR) of literals.
+
+Example:
+P ∨ Q ∨ R
+
+Conjunction:
+Statements connected using AND.
+
+Example:
+P ∧ Q ∧ R
+
+Conjunctive Normal Form (CNF):
+A conjunction of clauses.
+
+Example:
+
+(A ∨ B ∨ C)
+∧
+(D ∨ ¬E)
+∧
+(F ∨ G)
+
+
+==================================================
+CONVERTING TO CNF
+==================================================
+
+Step 1:
+Eliminate biconditionals
+
+(α ↔ β)
+→
+(α → β) ∧ (β → α)
+
+----------------------------------
+
+Step 2:
+Eliminate implications
+
+(α → β)
+→
+¬α ∨ β
+
+----------------------------------
+
+Step 3:
+Move negations inward using De Morgan's Laws
+
+¬(α ∧ β)
+→
+¬α ∨ ¬β
+
+¬(α ∨ β)
+→
+¬α ∧ ¬β
+
+
+==================================================
+CNF CONVERSION EXAMPLE
+==================================================
+
+Convert:
+(P ∨ Q) → R
+
+Step 1:
+¬(P ∨ Q) ∨ R
+
+(Eliminate implication)
+
+Step 2:
+(¬P ∧ ¬Q) ∨ R
+
+(De Morgan's Law)
+
+Step 3:
+(¬P ∨ R) ∧ (¬Q ∨ R)
+
+(Distributive Law)
+
+Final CNF:
+(¬P ∨ R) ∧ (¬Q ∨ R)
+
+
+==================================================
+FACTORING
+==================================================
+
+Sometimes a clause contains duplicate literals.
+
+Example:
+
+(P ∨ Q ∨ S)
+∧
+(¬P ∨ R ∨ S)
+
+Resolution gives:
+(Q ∨ S ∨ R ∨ S)
+
+Duplicate S removed:
+(Q ∨ R ∨ S)
+
+This process is called Factoring.
+
+
+==================================================
+EMPTY CLAUSE
+==================================================
+
+Resolving:
+P and ¬P
+
+Produces:
+()
+
+The empty clause is always FALSE.
+
+It represents contradiction.
+
+
+==================================================
+ENTAILMENT USING RESOLUTION
+==================================================
+
+To determine whether:
+
+KB ⊨ α
+
+We check:
+
+(KB ∧ ¬α)
+
+If this leads to contradiction,
+then:
+
+KB ⊨ α
+
+
+==================================================
+RESOLUTION ALGORITHM
+==================================================
+
+1. Convert:
+(KB ∧ ¬α)
+
+to CNF.
+
+2. Apply resolution repeatedly.
+
+3. If the empty clause () is produced:
+→ Contradiction achieved
+→ Therefore KB ⊨ α
+
+4. If no new clauses can be produced:
+→ No entailment
+
+
+==================================================
+FULL EXAMPLE
+==================================================
+
+Question:
+Does
+
+(A ∨ B)
+∧
+(¬B ∨ C)
+∧
+(¬C)
+
+entail A?
+
+----------------------------------
+
+Assume opposite of A:
+¬A
+
+Now KB becomes:
+
+(A ∨ B)
+∧
+(¬B ∨ C)
+∧
+(¬C)
+∧
+(¬A)
+
+----------------------------------
+
+Since ¬C is true,
+the only way (¬B ∨ C) can be true is:
+¬B
+
+Add:
+(¬B)
+
+----------------------------------
+
+Since ¬B is true,
+the only way (A ∨ B) can be true is:
+A
+
+Add:
+(A)
+
+----------------------------------
+
+Now we have:
+(A)
+and
+(¬A)
+
+These are complementary literals.
+
+Resolving them gives:
+()
+
+Empty clause reached
+→ Contradiction
+
+Therefore:
+
+KB ⊨ A

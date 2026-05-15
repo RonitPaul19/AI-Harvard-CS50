@@ -313,9 +313,8 @@ def model_check(knowledge, query):
             model_false[p] = False
 
             # Entailment must hold in both
-            return (
-              check_all(knowledge, query, remaining, model_true) and
-              check_all(knowledge, query, remaining, model_false)
+            return check_all(knowledge, query, remaining, model_true) and check_all(
+                knowledge, query, remaining, model_false
             )
 
     # Get all symbols

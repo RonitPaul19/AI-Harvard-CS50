@@ -105,6 +105,16 @@ For example, if P: “It is raining.” and Q: “It is Tuesday.”,
                     In fact, the number of possible models is 2 to the power of the number of propositions.
                     In this case, we had 2 propositions, so 2²=4 possible models.
 
+-------------------------------------------------------------------------------------------------------------
+Model checking algorithm :
+------------------------
+
+1. To determine if K.B ⊨ α :
+     * Enumerate all possible models
+     * If in every model K.B. is true α is also true then K.B entails α
+     * Otherwise K.B. doesnot entails α
+
+==================================================================================================================
 Knowledge Base (KB)
 -------------------
 The knowledge base is a set of sentences known by a knowledge-based agent.
@@ -135,9 +145,6 @@ Knowledge Base (KB) : (P ∧ ¬Q) → R  , P , ¬Q
                       { If it is a tuesday and it is not raining than Harry will go for a run }
 Inference : R {Harry will go for a run}
 
-==================================================================================================================
-==================================================================================================================
-
 Truth table :-
 -------------
 
@@ -155,3 +162,5 @@ true         |   false    |  true    |   true         |  <- One possible world w
 true         |   true     |  false   |   false        |
 true         |   true     |  true    |   false        |
 ------------------------------------------------------
+
+========================================================================================================================

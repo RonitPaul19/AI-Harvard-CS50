@@ -12,4 +12,7 @@ knowledge = And(
     dumbledore,
 )
 
-print(model_check(knowledge, rain)) # True
+print(knowledge.formula())
+# OUTPUT ::-- ((¬rain) => hagrid) ∧ (hagrid ∨ dumbledore) ∧ (¬(hagrid ∧ dumbledore)) ∧ dumbledore
+print(model_check(knowledge, rain))
+# OUTPUT ::-- True

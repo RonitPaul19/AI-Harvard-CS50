@@ -131,7 +131,7 @@ For example, if α: “It is a Tuesday in January” and β: “It is a Tuesday,
              Entailment is different from implication.
              Implication is a logical connective between two propositions.
              Entailment, on the other hand, is a relation that means that if all the information in α is true,
-             then all the information in β is true.
+             then all the information in β is true
 
 ==================================================================================================================
 ==================================================================================================================

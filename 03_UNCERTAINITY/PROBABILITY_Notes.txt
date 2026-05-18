@@ -1,0 +1,519 @@
+🌍 UNCERTAINTY IN AI
+
+In the real world, AI often has incomplete information.
+Even if AI cannot know something with 100% certainty, it should still make the best possible decision using available information.
+
+Examples:
+• Weather prediction 🌦️
+• Medical diagnosis 🏥
+• Stock market prediction 📈
+
+AI uses Probability Theory to handle uncertainty.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎲 PROBABILITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Probability measures how likely an event is to occur.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 POSSIBLE WORLDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Each possible situation is called a world, represented by:
+
+ω
+
+Example: Rolling a Die
+
+Possible worlds:
+{1, 2, 3, 4, 5, 6}
+
+Probability of a world:
+P(ω)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📏 AXIOMS OF PROBABILITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣ Probability Range
+
+0 ≤ P(ω) ≤ 1
+
+• 0 → Impossible event ❌
+• 1 → Certain event ✅
+
+Examples:
+• Rolling a 7 on a normal die → 0
+• Rolling a number less than 10 → 1
+
+
+2️⃣ Total Probability = 1
+
+The sum of probabilities of all possible worlds is always:
+
+1
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎲 SUMMING PROBABILITIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Single Die:
+
+P(R) = 1/6
+
+because there are 6 equally likely outcomes.
+
+
+Two Dice:
+
+Total possible worlds:
+
+6 × 6 = 36
+
+
+🎯 Probability of Sum = 12
+
+Only one world gives 12:
+
+(6,6)
+
+Therefore:
+
+P(12) = 1/36
+
+
+🎯 Probability of Sum = 7
+
+Possible worlds:
+
+(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)
+
+Total favorable worlds = 6
+
+P(7) = 6/36 = 1/6
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📌 UNCONDITIONAL PROBABILITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Probability without any prior evidence.
+
+Example:
+
+P(Rain Tomorrow)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📌 CONDITIONAL PROBABILITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Probability of an event given some evidence.
+
+Notation:
+
+P(a | b)
+
+Meaning:
+Probability of a given b
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧮 CONDITIONAL PROBABILITY FORMULA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+P(a | b) = P(a ∧ b) / P(b)
+
+Intuition:
+1. Restrict ourselves to worlds where b is true
+2. Then check how often a also occurs
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎲 EXAMPLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Find:
+
+P(sum = 12 | first die = 6)
+
+Possible worlds after restriction:
+
+(6,1), (6,2), (6,3), (6,4), (6,5), (6,6)
+
+Only one gives sum = 12.
+
+P = 1/6
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎰 RANDOM VARIABLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A random variable can take multiple values.
+
+
+🎲 Die Example
+
+Roll ∈ {1,2,3,4,5,6}
+
+
+✈️ Flight Example
+
+Flight ∈ {on time, delayed, canceled}
+
+
+Probability Distribution:
+
++----------------+-------------+
+| Flight Status  | Probability |
++----------------+-------------+
+| On Time        | 0.6         |
+| Delayed        | 0.3         |
+| Canceled       | 0.1         |
++----------------+-------------+
+
+Vector form:
+
+P(Flight) = <0.6, 0.3, 0.1>
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔗 INDEPENDENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Two events are independent if one does not affect the other.
+
+Example:
+Rolling two dice:
+• First die result does not affect second die.
+
+
+Formula:
+
+P(a ∧ b) = P(a)P(b)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📘 BAYES’ RULE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Used to reverse conditional probabilities.
+
+Formula:
+
+P(b | a) = [P(a | b) × P(b)] / P(a)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌧️ EXAMPLE: RAIN AND CLOUDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Given:
+
+P(clouds | rain) = 0.8
+P(clouds) = 0.4
+P(rain) = 0.1
+
+Find:
+
+P(rain | clouds)
+
+Using Bayes Rule:
+
+= (0.8 × 0.1) / 0.4
+
+= 0.2
+
+Final Answer:
+
+P(rain | clouds) = 0.2
+
+Meaning:
+If it is cloudy, there is a 20% chance of rain.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🤝 JOINT PROBABILITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Probability of multiple events occurring together.
+
+
+☁️🌧️ Example Table
+
++-------------+-------------+-------------+
+| Clouds (C)  | Rain (R)    | Probability |
++-------------+-------------+-------------+
+| Cloud       | Rain        | 0.08        |
+| Cloud       | No Rain     | 0.32        |
+| No Cloud    | Rain        | 0.02        |
+| No Cloud    | No Rain     | 0.58        |
++-------------+-------------+-------------+
+
+
+Conditional Probability from Joint Probability:
+
+P(C | rain) = P(C, rain) / P(rain)
+
+Since:
+
+P(rain) = 0.08 + 0.02 = 0.1
+
+Then:
+
+P(C | rain) = 0.08 / 0.1 = 0.8
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ NORMALIZATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Convert proportions into valid probabilities.
+
+Example:
+
+<0.08, 0.02>
+
+Sum:
+
+0.1
+
+Normalize:
+
+<0.8, 0.2>
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📚 IMPORTANT PROBABILITY RULES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣ Negation Rule
+
+P(¬a) = 1 - P(a)
+
+
+2️⃣ Inclusion–Exclusion Rule
+
+P(a ∨ b) = P(a) + P(b) - P(a ∧ b)
+
+Example:
+If:
+• Eat ice cream = 0.8
+• Eat cookies = 0.7
+
+Then:
+
+0.8 + 0.7 = 1.5
+
+Impossible ❌
+
+Because days with both were counted twice.
+
+So subtract overlap.
+
+
+3️⃣ Marginalization
+
+P(a) = P(a,b) + P(a,¬b)
+
+Idea:
+When a occurs:
+• either b happens
+• or b does not happen
+
+
+4️⃣ Conditioning Rule
+
+P(a) = P(a | b)P(b) + P(a | ¬b)P(¬b)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🕸️ BAYESIAN NETWORKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A Bayesian Network is a graph representing dependencies between variables.
+
+
+Properties:
+
+✅ Directed Graph
+✅ Nodes = Random Variables
+✅ Arrows = Dependency
+✅ Each node stores:
+
+P(X | Parents(X))
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚆 EXAMPLE BAYESIAN NETWORK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Variables:
+
++---------------+----------------------+
+| Variable      | Values               |
++---------------+----------------------+
+| Rain          | none, light, heavy   |
+| Maintenance   | yes, no              |
+| Train         | on time, delayed     |
+| Appointment   | attend, miss         |
++---------------+----------------------+
+
+
+🌧️ Rain Distribution
+
++--------+-------------+
+| Rain   | Probability |
++--------+-------------+
+| None   | 0.7         |
+| Light  | 0.2         |
+| Heavy  | 0.1         |
++--------+-------------+
+
+
+🛠️ Maintenance Depends on Rain
+
++--------+------+------+
+| Rain   | Yes  | No   |
++--------+------+------+
+| None   | 0.4  | 0.6  |
+| Light  | 0.2  | 0.8  |
+| Heavy  | 0.1  | 0.9  |
++--------+------+------+
+
+
+🚆 Train Depends on Rain + Maintenance
+
++--------+-------------+----------+----------+
+| Rain   | Maintenance | On Time | Delayed |
++--------+-------------+----------+----------+
+| None   | Yes         | 0.8      | 0.2      |
+| None   | No          | 0.9      | 0.1      |
+| Light  | Yes         | 0.6      | 0.4      |
+| Light  | No          | 0.7      | 0.3      |
+| Heavy  | Yes         | 0.4      | 0.6      |
+| Heavy  | No          | 0.5      | 0.5      |
++--------+-------------+----------+----------+
+
+
+🏥 Appointment Depends on Train
+
++-----------+---------+------+
+| Train     | Attend  | Miss |
++-----------+---------+------+
+| On Time   | 0.9     | 0.1  |
+| Delayed   | 0.6     | 0.4  |
++-----------+---------+------+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧮 JOINT PROBABILITY IN BAYESIAN NETWORK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Example:
+
+P(light, no, delayed, miss)
+
+Computed as:
+
+P(light) × P(no | light) × P(delayed | light, no) × P(miss | delayed)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔍 INFERENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Inference means computing unknown probabilities from known evidence.
+
+
+Components:
+
++----------------------+--------------------------------+
+| Component            | Meaning                        |
++----------------------+--------------------------------+
+| Query Variable (X)   | What we want to know           |
+| Evidence Variables   | Observed information           |
+| Hidden Variables     | Unknown variables              |
++----------------------+--------------------------------+
+
+
+Goal:
+
+P(X | e)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧠 EXAMPLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Given:
+• Light rain
+• No maintenance
+
+Find:
+
+P(Appointment | light, no)
+
+Use:
+• Joint Probability
+• Marginalization
+• Conditional Probability
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔢 INFERENCE BY ENUMERATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A method for computing probabilities by:
+
+1. Considering all hidden variables
+2. Computing joint probabilities
+3. Summing over possibilities
+4. Normalizing final values
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⭐ QUICK REVISION SHEET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
++-------------------------+-----------------------------------------------+
+| Topic                   | Formula                                      |
++-------------------------+-----------------------------------------------+
+| Conditional Probability | P(a | b) = P(a ∧ b) / P(b)                   |
+| Bayes Rule              | P(b | a) = [P(a | b)P(b)] / P(a)             |
+| Independence            | P(a ∧ b) = P(a)P(b)                          |
+| Negation                | P(¬a) = 1 - P(a)                             |
+| Inclusion–Exclusion     | P(a ∨ b) = P(a)+P(b)-P(a ∧ b)               |
+| Marginalization         | P(a) = P(a,b) + P(a,¬b)                      |
++-------------------------+-----------------------------------------------+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 IMPORTANT EXAM CONCEPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Conditional Probability
+✅ Bayes Rule
+✅ Independence
+✅ Joint Probability
+✅ Marginalization
+✅ Bayesian Networks
+✅ Inference by Enumeration
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 FINAL INTUITION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AI under uncertainty works like this:
+
+1. Observe evidence 👀
+2. Use probabilities 📊
+3. Infer hidden causes 🧠
+4. Make best decision possible 🤖
